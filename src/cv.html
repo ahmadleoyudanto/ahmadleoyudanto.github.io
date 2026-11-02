@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ahmad Leo Yudanto · CV</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;600&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+@page{size:A4;margin:14mm 15mm}
+*{box-sizing:border-box}
+body{font-family:"IBM Plex Sans",Arial,sans-serif;font-size:9.6pt;line-height:1.45;color:#14202A;margin:0}
+h1,h2,h3{font-family:"Bricolage Grotesque",Arial,sans-serif;margin:0}
+h1{font-size:24pt;font-weight:800;letter-spacing:-.02em}
+h2{font-size:10pt;text-transform:uppercase;letter-spacing:.1em;color:#0E7466;border-bottom:1px solid #D8DCD3;padding-bottom:3px;margin:14px 0 8px}
+h3{font-size:10.5pt;font-weight:700}
+p{margin:0}
+ul{margin:4px 0 0;padding-left:14px}
+li{margin:2px 0}
+.mono{font-family:"JetBrains Mono",monospace;font-size:8pt;color:#58646D}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
+.role{color:#0E7466;font-weight:600;margin-top:2px}
+.contact{text-align:right;font-size:8.6pt;color:#58646D}
+.summary{margin-top:10px}
+.job{margin-bottom:9px;break-inside:avoid}
+.job .row{display:flex;justify-content:space-between;gap:12px}
+.job .row span{color:#58646D;white-space:nowrap}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 20px}
+b{font-weight:600}
+</style>
+</head>
+<body>
+<div class="head">
+  <div>
+    <h1>Ahmad Leo Yudanto</h1>
+    <p class="role">Senior Backend Engineer · Team Lead</p>
+  </div>
+  <div class="contact">
+    Jakarta, Indonesia · open to Indonesia, Japan, UAE<br>
+    ahmadleoyudanto@gmail.com<br>
+    linkedin.com/in/ahmad-leo-yudanto-970431114
+  </div>
+</div>
+
+<p class="summary">Backend engineer with nearly ten years of building and testing software, the last five on production backends for e-commerce and accounting SaaS. Started as an SDET and still designs for testability first. Currently leads a promo squad on Klik Indomaret, where Kafka consumer fixes cut Kubernetes pods from 200 to 30 and unit test coverage went from 0–15% to over 90%.</p>
+
+<h2>Experience</h2>
+
+<div class="job">
+  <div class="row"><h3>Senior Backend Engineer · EDTS (Klik Indomaret)</h3><span>Jun 2025 – present</span></div>
+  <ul>
+    <li>Platform scale: ~90k orders/day, peaks of 500k/day on campaign days (~11M orders per quarter).</li>
+    <li>Lead a three-person squad across promo, cart, catalog and order services. Delivered Free Gift (Hadiah Gratis; 2.5M orders and 6.5M free items in its first year), non-base to base promo migration and paired-product exclusion on schedule with no weekend or overtime work.</li>
+    <li>Fixed recurring Kafka rebalancing and consumer lag (StickyAssignor, poll interval and batch tuning, record-level acks, one thread per partition, OOM fix, idempotent consumption, dead-letter topic). Cut Kubernetes pods on affected services from 200 to 30 (−85%).</li>
+    <li>Introduced unit testing with JaCoCo and SonarQube in CI/CD. Raised coverage from 0–15% to 90%+ on every service in scope.</li>
+    <li>Built AI-assisted engineering for the team: written rules plus Claude Code skills for test writing, PR review, merge-conflict resolution and data-driven debugging. Adopted by the whole squad.</li>
+    <li>~1,240 commits across 20 services in 16 months.</li>
+  </ul>
+  <p class="mono">Java · Spring Boot · PostgreSQL · Kafka · Redis · Elasticsearch · Kubernetes (GKE) · GCP</p>
+</div>
+
+<div class="job">
+  <div class="row"><h3>Career break</h3><span>Jan – May 2025</span></div>
+  <p>Studied Japanese full time to N3 level; studied data structures, algorithms and Kafka.</p>
+</div>
+
+<div class="job">
+  <div class="row"><h3>Mekari (Jurnal) · SDET → Senior SDET → Software Engineer 1 → 2</h3><span>Dec 2019 – Dec 2024</span></div>
+  <ul>
+    <li><b>Software Engineer 1–2 (Nov 2021 – Dec 2024):</b> built and maintained Jurnal integrations for bank statements, e-commerce marketplaces, Moka POS and supply chain, plus accounting features. Resolved long-standing integration issues others avoided.</li>
+    <li><b>SDET / Senior SDET (Dec 2019 – Nov 2021):</b> built web and API automation frameworks covering 1,300+ web scenarios (3,000+ test cases) and 1,000+ API scenarios; JMeter load testing; Docker/Jenkins pipelines; automation dashboard in Rails; mentored and interviewed testers.</li>
+  </ul>
+  <p class="mono">Java · Go · Ruby on Rails · Vue/Nuxt · Kafka · RabbitMQ · MongoDB · MySQL · Elasticsearch · AWS · Kubernetes · ArgoCD · Datadog · Sentry</p>
+</div>
+
+<div class="job">
+  <div class="row"><h3>Earlier roles</h3><span>2015 – 2019</span></div>
+  <p>Associate SDET, Blibli.com (2019) · Web Developer, Gloding Inc (2016–2018, Java Server Faces) · Back-End Developer, Gumcode (2016–2017, Laravel APIs for mobile apps) · Front-End intern, PT Javan Cipta Solusi (2015)</p>
+</div>
+
+<h2>Skills</h2>
+<div class="grid">
+  <p><b>Backend:</b> Java 8–17, Spring Boot, Go, Ruby on Rails, Laravel</p>
+  <p><b>Messaging:</b> Kafka, RabbitMQ, Sidekiq</p>
+  <p><b>Data:</b> PostgreSQL, MySQL, MongoDB, Redis, Elasticsearch</p>
+  <p><b>Platform:</b> Kubernetes (GKE), Docker, GCP, AWS, ArgoCD, Jenkins</p>
+  <p><b>Quality:</b> JUnit 5, Mockito, JaCoCo, SonarQube, Selenium, JMeter, Postman</p>
+  <p><b>Observability &amp; AI:</b> Datadog, Sentry, Zipkin, Claude Code</p>
+</div>
+
+<h2>Education, languages, certifications</h2>
+<div class="grid">
+  <p><b>B.Sc. Information Technology</b>, Universitas Brawijaya (2012–2017)</p>
+  <p><b>Languages:</b> Indonesian (native), English (C1, EF SET 67), Japanese (N3 level, self-taught)</p>
+  <p><b>Certifications:</b> HackerRank Software Engineer (2025), EF SET C1 (2025)</p>
+  <p><b>Courses:</b> Kafka with Spring Boot (2023), DS &amp; Algorithms (2025), Docker &amp; Kubernetes (2025)</p>
+</div>
+</body>
+</html>

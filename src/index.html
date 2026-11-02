@@ -1,0 +1,406 @@
+<title>Ahmad Leo Yudanto</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Ahmad Leo Yudanto: senior backend engineer in Jakarta. Kafka, Spring Boot, test culture, calm delivery.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one long "service log" — a single 64ch reading column, with wide bands for the hero metric and case studies. */
+:root{
+  --bg:#F2F3EE; --surface:#FFFFFF; --ink:#14202A; --muted:#58646D; --line:#D8DCD3;
+  --accent:#0E7466; --accent-soft:#DCEEE9; --warn:#C96A12; --warn-soft:#F7E6D3;
+  --f-display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
+  --f-body:"IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --step--1:0.84rem; --step-0:1rem; --step-1:1.2rem; --step-2:1.55rem; --step-3:2.1rem; --step-4:clamp(2.5rem, 6vw, 4.2rem);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E1418; --surface:#151E24; --ink:#E5E9E4; --muted:#95A1A8; --line:#25313A;
+  --accent:#43C3AA; --accent-soft:#143A35; --warn:#F0A04B; --warn-soft:#3A2814; color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#0E1418; --surface:#151E24; --ink:#E5E9E4; --muted:#95A1A8; --line:#25313A;
+  --accent:#43C3AA; --accent-soft:#143A35; --warn:#F0A04B; --warn-soft:#3A2814; color-scheme:dark;}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:var(--step-0);line-height:1.65;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--f-display);line-height:1.1;text-wrap:balance;margin:0}
+h2{font-size:var(--step-3);font-weight:700;letter-spacing:-0.01em}
+h3{font-size:var(--step-1);font-weight:700}
+p{margin:0}
+.wrap{max-width:68rem;margin:0 auto}
+.col{max-width:44rem}
+.mono{font-family:var(--f-mono);font-size:var(--step--1)}
+.label{font-family:var(--f-mono);font-size:0.74rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted)}
+section{padding-block:clamp(3rem,7vw,5.5rem);border-top:1px solid var(--line)}
+.sec-head{display:flex;flex-direction:column;gap:.6rem;margin-bottom:2rem}
+.stack{display:flex;flex-direction:column;gap:1rem}
+
+/* top bar */
+.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;padding-block:1.2rem}
+.top nav{display:flex;gap:1.1rem;flex-wrap:wrap}
+.top nav a{color:var(--muted);text-decoration:none;font-size:var(--step--1)}
+.top nav a:hover{color:var(--ink)}
+.brand{font-family:var(--f-mono);font-size:var(--step--1);color:var(--ink);text-decoration:none}
+.brand b{color:var(--accent)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(2rem,5vw,4rem);align-items:center;padding-block:clamp(2.5rem,6vw,5rem)}
+.hero h1{font-size:var(--step-4);font-weight:800;letter-spacing:-0.025em}
+.hero .role{font-family:var(--f-mono);color:var(--accent);font-size:var(--step--1)}
+.hero .thesis{font-size:var(--step-1);max-width:34rem;color:var(--ink)}
+.hero .sub{color:var(--muted);max-width:34rem}
+.actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:.5rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font:600 var(--step--1)/1 var(--f-body);padding:.85rem 1.15rem;border-radius:6px;text-decoration:none;cursor:pointer;border:1px solid var(--ink)}
+.btn.primary{background:var(--ink);color:var(--bg)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn:hover{transform:translateY(-1px)}
+
+/* pods panel */
+.pods{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1.25rem;display:flex;flex-direction:column;gap:1rem;min-width:0}
+.pods-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap}
+.pods-count{font-family:var(--f-display);font-size:var(--step-3);font-weight:800;font-variant-numeric:tabular-nums}
+.pods-count .from{color:var(--warn)} .pods-count .to{color:var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(20,1fr);gap:4px}
+.grid i{display:block;aspect-ratio:1;border-radius:2px;background:var(--accent);transition:background .5s ease, opacity .5s ease, transform .5s ease}
+.grid i.off{background:var(--line);opacity:.55;transform:scale(.7)}
+.pods-legend{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;color:var(--muted)}
+.toggle{background:none;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:.35rem .8rem;font:500 .78rem var(--f-mono);cursor:pointer}
+
+/* numbers */
+.numbers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.num{background:var(--surface);padding:1.4rem 1.2rem;display:flex;flex-direction:column;gap:.35rem}
+.num strong{font-family:var(--f-display);font-size:var(--step-3);font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+.num span{color:var(--muted);font-size:var(--step--1);line-height:1.45}
+
+/* case studies */
+.cases{display:flex;flex-direction:column;gap:clamp(2.5rem,5vw,4rem)}
+.case{display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr);gap:clamp(1.25rem,4vw,3rem)}
+.case aside{display:flex;flex-direction:column;gap:.75rem}
+.case .result{font-family:var(--f-display);font-size:var(--step-2);font-weight:700;color:var(--accent);line-height:1.15}
+.case .body{display:flex;flex-direction:column;gap:1rem;min-width:0}
+.case ul{margin:0;padding-left:1.1rem;display:flex;flex-direction:column;gap:.35rem}
+.config{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:1rem 1.1rem;overflow-x:auto;margin:0;line-height:1.7}
+.config .k{color:var(--muted)} .config .v{color:var(--accent)} .config .c{color:var(--muted);font-style:italic}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem}
+.chip{font-family:var(--f-mono);font-size:.72rem;padding:.2rem .55rem;border-radius:4px;background:var(--accent-soft);color:var(--ink)}
+
+/* timeline */
+.timeline{display:flex;flex-direction:column}
+.job{display:grid;grid-template-columns:minmax(0,11rem) minmax(0,1fr);gap:1.5rem;padding-block:1.6rem;border-top:1px dashed var(--line)}
+.job:first-child{border-top:0;padding-top:0}
+.job .when{font-family:var(--f-mono);font-size:var(--step--1);color:var(--muted);font-variant-numeric:tabular-nums}
+.job .what{display:flex;flex-direction:column;gap:.55rem;min-width:0}
+.job .co{color:var(--muted)}
+.ladder{display:flex;flex-direction:column;gap:.15rem;font-family:var(--f-mono);font-size:var(--step--1)}
+.ladder span{color:var(--muted)}
+.job.break .what{color:var(--muted)}
+.job ul{margin:0;padding-left:1.1rem;display:flex;flex-direction:column;gap:.3rem}
+
+/* work with me */
+.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(1.5rem,4vw,3rem)}
+.list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.list li{padding-block:.9rem;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:.2rem}
+.list li b{font-weight:600}
+.list li span{color:var(--muted);font-size:.95rem}
+.fit{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1.4rem;display:flex;flex-direction:column;gap:1rem}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem 2rem}
+.skills div{display:flex;flex-direction:column;gap:.5rem}
+.skills p{color:var(--muted);font-size:.95rem}
+
+/* japan */
+.jp{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(1.25rem,4vw,3rem);align-items:start}
+.jp .kana{font-family:var(--f-display);font-size:clamp(3rem,9vw,5.5rem);font-weight:800;line-height:.9;color:var(--accent);writing-mode:vertical-rl;letter-spacing:.05em}
+
+/* contact */
+.contact{display:flex;flex-direction:column;gap:1.5rem}
+.contact h2{font-size:var(--step-4);font-weight:800;letter-spacing:-.02em}
+.mail{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.mail code{font-family:var(--f-mono);font-size:var(--step-1);user-select:all;word-break:break-all}
+.links{display:flex;gap:1.25rem;flex-wrap:wrap}
+footer{padding-block:2rem;border-top:1px solid var(--line);color:var(--muted);font-size:var(--step--1);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+
+@media (max-width: 860px){
+  .hero,.case,.pair,.jp{grid-template-columns:minmax(0,1fr)}
+  .numbers{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .skills{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .job{grid-template-columns:minmax(0,1fr);gap:.5rem}
+  .jp .kana{writing-mode:horizontal-tb}
+}
+@media (max-width: 480px){ .skills{grid-template-columns:minmax(0,1fr)} .grid{gap:3px} }
+@media (prefers-reduced-motion: reduce){ *{transition:none!important} }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#top">ahmad<b>.</b>leo<b>/</b>yudanto</a>
+    <nav aria-label="Sections">
+      <a href="#work">Work</a><a href="#experience">Experience</a><a href="#with-me">Working with me</a><a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero" id="top">
+    <div class="stack">
+      <p class="role">Senior Backend Engineer · Team Lead · Jakarta</p>
+      <h1>Ahmad Leo Yudanto</h1>
+      <p class="thesis">I build backend systems that stay calm under load, so the people who run them can stay calm too.</p>
+      <p class="sub">Nearly ten years building and testing software, the last five in production backends for e-commerce and accounting SaaS. Started in QA, so I still think like a tester. Today I lead a promo squad on Klik Indomaret, one of Indonesia's largest grocery e-commerce platforms: about 90,000 orders on a normal day and up to 500,000 on campaign days.</p>
+      <div class="actions">
+        <a class="btn primary" href="cv.pdf" download="Ahmad-Leo-Yudanto-CV.pdf">Download CV (PDF)</a>
+        <a class="btn ghost" href="#contact">Get in touch</a>
+      </div>
+    </div>
+
+    <figure class="pods" aria-label="Kubernetes pods before and after the Kafka consumer fix: 200 down to 30">
+      <div class="pods-head">
+        <span class="label">k8s pods · catalog consumers</span>
+        <span class="pods-count"><span class="from">200</span> → <span class="to" id="podNum">30</span></span>
+      </div>
+      <div class="grid" id="podGrid"></div>
+      <div class="pods-legend">
+        <span class="mono">same traffic, 85% fewer pods</span>
+        <button class="toggle" id="podToggle" type="button">Show before</button>
+      </div>
+    </figure>
+  </div>
+
+  <div class="numbers" aria-label="Key numbers">
+    <div class="num"><strong>−85%</strong><span>Kubernetes pods on Kafka consumer services after fixing rebalancing (200 → 30)</span></div>
+    <div class="num"><strong>90%+</strong><span>unit test coverage on every service in my scope, up from 0–15%</span></div>
+    <div class="num"><strong>0</strong><span>weekends or overtime asked of my team across three promo launches</span></div>
+    <div class="num"><strong>500k</strong><span>orders a day on campaign peaks, 5× a normal day, on services I work on</span></div>
+  </div>
+
+  <section id="work">
+    <div class="sec-head col">
+      <span class="label">Selected work</span>
+      <h2>Three things I'd point to in an interview</h2>
+    </div>
+
+    <div class="cases">
+      <article class="case">
+        <aside>
+          <span class="label">01 · Performance &amp; cost</span>
+          <h3>Stopping the Kafka rebalance storm</h3>
+          <p class="result">200 pods → 30</p>
+          <div class="chips"><span class="chip">Kafka</span><span class="chip">Spring Boot</span><span class="chip">GKE</span></div>
+        </aside>
+        <div class="body">
+          <p>The catalog consumers kept rebalancing. Every rebalance paused the group, lag grew, and the answer had been to add pods. More pods meant more members joining and leaving, which meant more rebalancing. The cluster had grown to 200 pods and the lag was still there.</p>
+          <p>The root cause was consumers taking too long between polls and getting kicked out of the group, plus an out-of-memory crash that restarted pods mid-batch. I fixed the consumer, not the cluster:</p>
+<pre class="config mono"><span class="c"># consumer, per topic</span>
+<span class="k">partition.assignment.strategy</span> = <span class="v">StickyAssignor</span>   <span class="c"># keep partitions on rebalance</span>
+<span class="k">max.poll.interval.ms</span>          = <span class="v">↑ raised</span>         <span class="c"># slow batches no longer evicted</span>
+<span class="k">max.poll.records</span>              = <span class="v">↓ lowered</span>        <span class="c"># smaller, predictable batches</span>
+<span class="k">ackMode</span>                       = <span class="v">RECORD</span>
+<span class="k">concurrency</span>                   = <span class="v">1 thread per partition</span></pre>
+          <ul>
+            <li>Fixed the OOM in the consumer service so pods stopped restarting mid-batch.</li>
+            <li>Made consumption idempotent: a message already logged as processed is skipped, so retries are safe.</li>
+            <li>Added a dead-letter topic and moved heavy scheduled topics into their own application mode, so they stopped loading the main consumer group.</li>
+          </ul>
+          <p>Same traffic, 30 pods, lag back under control, including campaign days that jump from about 90,000 to 500,000 orders. Nobody gets paged for it any more.</p>
+        </div>
+      </article>
+
+      <article class="case">
+        <aside>
+          <span class="label">02 · Quality culture</span>
+          <h3>From 0–15% coverage to 90%+, with AI doing the typing</h3>
+          <p class="result">90%+ on every service</p>
+          <div class="chips"><span class="chip">JUnit 5</span><span class="chip">Mockito</span><span class="chip">SonarQube</span><span class="chip">Claude Code</span></div>
+        </aside>
+        <div class="body">
+          <p>When I joined, most services had between 0 and 15% unit test coverage and no quality gate. I added JaCoCo and SonarQube to the existing CI/CD pipeline so every merge reports coverage, then brought the services in my scope above 90%.</p>
+          <p>The part I'm proudest of is how it stays there. I wrote our team's engineering rules as Markdown, then packaged them as AI skills: one writes tests to our conventions, one reviews pull requests and posts comments, one resolves test-file merge conflicts, and one debugs by reproducing a production issue in a unit test with real data first.</p>
+          <ul>
+            <li>Everyone on my team now uses AI to write tests and debug, under the same written rules, so the output looks like ours.</li>
+            <li>Production issues on our services have dropped noticeably since tests became the default.</li>
+            <li>My SDET background is why this worked: I design the tests first and let the tooling fill them in.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="case">
+        <aside>
+          <span class="label">03 · Leading delivery</span>
+          <h3>Three promo launches with a team of three, no overtime</h3>
+          <p class="result">6.5M free gifts in year one</p>
+          <div class="chips"><span class="chip">Promo engine</span><span class="chip">Cart</span><span class="chip">Catalog</span><span class="chip">Elasticsearch</span></div>
+        </aside>
+        <div class="body">
+          <p>Promotions are where e-commerce money goes wrong: one rule off and the cart gives away margin, or a customer is charged more than the shelf label says. I lead the squad that builds them.</p>
+          <ul>
+            <li><b>Free Gift (Hadiah Gratis):</b> a new promo type. Meet the condition and a free item joins the cart. New APIs for eligible gifts and add-to-cart, with stock handled so a gift never oversells. In its first year: 2.5 million orders with a gift and 6.5 million free items handed out.</li>
+            <li><b>Non-base to base migration:</b> moved existing promotions onto the base promo model without breaking live campaigns.</li>
+            <li><b>Paired-product exclusion:</b> removed paired products from specific promos, which touched pricing, strike-through labels and upsell logic across cart and catalog.</li>
+          </ul>
+          <p>Every launch shipped on schedule, and nobody on the team worked a weekend for it. I plan for that on purpose: a team that isn't exhausted makes fewer mistakes in money logic.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="sec-head col">
+      <span class="label">Experience</span>
+      <h2>From tester to the person who owns the backend</h2>
+    </div>
+    <div class="timeline">
+      <div class="job">
+        <div class="when">Jun 2025 – now</div>
+        <div class="what">
+          <h3>Senior Backend Engineer</h3>
+          <span class="co">EDTS · Klik Indomaret</span>
+          <ul>
+            <li>Lead a three-person squad across promo, cart, catalog and order services: about 11 million orders a quarter, peaking at 500,000 a day.</li>
+            <li>1,240 commits across 20 services in 16 months.</li>
+            <li>Kafka reliability work that cut consumer pods from 200 to 30.</li>
+            <li>Introduced unit testing, SonarQube quality gates and AI-assisted engineering for the team.</li>
+          </ul>
+          <span class="mono">Spring Boot · PostgreSQL · Kafka · Redis · Elasticsearch · Kubernetes · GCP</span>
+        </div>
+      </div>
+      <div class="job break">
+        <div class="when">Jan – May 2025</div>
+        <div class="what">
+          <h3>Career break</h3>
+          <p>After a layoff, I studied Japanese full time and brought it to N3 level, and sharpened data structures, algorithms and Kafka.</p>
+        </div>
+      </div>
+      <div class="job">
+        <div class="when">Dec 2019 – Dec 2024</div>
+        <div class="what">
+          <h3>Mekari · five years, three promotions</h3>
+          <span class="co">Indonesia's largest business SaaS: Jurnal accounting</span>
+          <div class="ladder">
+            <div>Software Engineer 2 <span>· 2024</span></div>
+            <div>Software Engineer 1 <span>· 2021 – 2024</span></div>
+            <div>Senior SDET <span>· 2021</span></div>
+            <div>SDET <span>· 2019 – 2020</span></div>
+          </div>
+          <ul>
+            <li>Built Jurnal's integrations: bank statements, e-commerce marketplaces, Moka POS transactions and supply chain. Took the integration issues nobody else wanted to touch and closed them.</li>
+            <li>As SDET, built and ran web and API automation covering 1,300+ web scenarios and 1,000+ API scenarios, plus JMeter load tests and the Jenkins pipeline around them. Mentored and interviewed new testers.</li>
+          </ul>
+          <span class="mono">Java · Go · Ruby on Rails · Vue/Nuxt · Kafka · RabbitMQ · MongoDB · MySQL · AWS · ArgoCD · Datadog</span>
+        </div>
+      </div>
+      <div class="job">
+        <div class="when">2015 – 2019</div>
+        <div class="what">
+          <h3>Earlier</h3>
+          <p>Automation testing at Blibli.com. Web and backend development at Gloding (Java Server Faces), Gumcode (Laravel APIs for iOS and Android) and PT Javan Cipta Solusi. B.Sc. Information Technology, Universitas Brawijaya.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="with-me">
+    <div class="sec-head col">
+      <span class="label">Working with me</span>
+      <h2>How I work best, and where I fit</h2>
+      <p class="sub" style="color:var(--muted)">Written so you can tell early whether we'd be a good match. It saves us both time.</p>
+    </div>
+    <div class="pair">
+      <div class="stack">
+        <h3>What you can expect from me</h3>
+        <ul class="list">
+          <li><b>I take the issue nobody wants.</b><span>Old integrations, flaky consumers, unclear money logic. I like closing those.</span></li>
+          <li><b>Calm beats heroic.</b><span>I'd rather spend a week making a system boring than spend every month firefighting it.</span></li>
+          <li><b>I protect my team's time.</b><span>I scope and plan so launches land without weekends. Tired people write bugs.</span></li>
+          <li><b>I debug with real data.</b><span>Production rows, logs and payloads go into a failing test first. Then I fix the line that's wrong.</span></li>
+          <li><b>I write things down.</b><span>Team rules, conventions and runbooks live in Markdown, so people and AI tools follow the same playbook.</span></li>
+        </ul>
+      </div>
+      <div class="stack">
+        <h3>What helps me do my best work</h3>
+        <ul class="list">
+          <li><b>Explain the business flow first.</b><span>Once I understand why a promo or an order behaves the way it does, I move fast in the code.</span></li>
+          <li><b>Direct feedback.</b><span>Tell me plainly when I'm wrong. I'll say my concern once, then commit to the decision.</span></li>
+          <li><b>Room to improve the tools.</b><span>Some of my best results came from fixing how we work, not only what we ship.</span></li>
+        </ul>
+        <div class="fit">
+          <span class="label">Teams where I fit</span>
+          <p>Product companies with real complexity in money, stock or integrations (retail, fintech, B2B SaaS) that value quality and a sustainable pace over hustle. I'm open to Indonesia, Japan and the UAE, and work comfortably in English.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head col">
+      <span class="label">Toolbox</span>
+      <h2>What I use day to day</h2>
+    </div>
+    <div class="skills">
+      <div><h3>Backend</h3><p>Java 8–17 and Spring Boot (primary), Go, Ruby on Rails, Laravel</p></div>
+      <div><h3>Messaging</h3><p>Kafka (consumer tuning, DLQ, idempotency), RabbitMQ, Sidekiq</p></div>
+      <div><h3>Data</h3><p>PostgreSQL, MySQL, MongoDB, Redis, Elasticsearch</p></div>
+      <div><h3>Platform</h3><p>Kubernetes (GKE), Docker, GCP, AWS, ArgoCD, Jenkins</p></div>
+      <div><h3>Quality</h3><p>JUnit 5, Mockito, JaCoCo, SonarQube, Selenium, Cucumber, JMeter, Postman</p></div>
+      <div><h3>Observability &amp; AI</h3><p>Datadog, Sentry, Zipkin, Claude Code with team-written skills</p></div>
+    </div>
+  </section>
+
+  <section id="japan">
+    <div class="jp">
+      <div class="kana" lang="ja" aria-hidden="true">日本語</div>
+      <div class="stack col">
+        <span class="label">Languages</span>
+        <h2>English at C1, Japanese in progress</h2>
+        <p>English: EF SET 67/100, C1 Advanced. I work, write and interview in English.</p>
+        <p>Japanese: self-taught to N3 level and preparing to sit the JLPT N3 again. I'm serious about working in Japan and keep studying alongside my job.</p>
+        <p>Bahasa Indonesia: native.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <span class="label">Contact</span>
+    <h2>Let's talk.</h2>
+    <p class="col" style="color:var(--muted)">Open to backend and tech lead roles in Indonesia, Japan and the UAE. Email is the fastest way to reach me.</p>
+    <div class="mail">
+      <code id="email">ahmadleoyudanto@gmail.com</code>
+      <button class="toggle" id="copyBtn" type="button">Copy email</button>
+    </div>
+    <div class="links">
+      <a href="https://id.linkedin.com/in/ahmad-leo-yudanto-970431114" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/ahmadleoyudanto" target="_blank" rel="noopener">GitHub</a>
+      <a href="cv.pdf" download="Ahmad-Leo-Yudanto-CV.pdf">CV (PDF)</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Ahmad Leo Yudanto · Jakarta</span>
+    <span class="mono">Hand-built, no framework.</span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var grid=document.getElementById('podGrid'), num=document.getElementById('podNum'), btn=document.getElementById('podToggle');
+  var cells=[];
+  for(var i=0;i<200;i++){var c=document.createElement('i');if(i>=30)c.className='off';grid.appendChild(c);cells.push(c);}
+  var before=false;
+  function render(){
+    cells.forEach(function(c,i){c.classList.toggle('off',!before&&i>=30);});
+    num.textContent=before?'200':'30';
+    num.style.color=before?'var(--warn)':'';
+    btn.textContent=before?'Show after':'Show before';
+  }
+  btn.addEventListener('click',function(){before=!before;render();});
+
+  var copy=document.getElementById('copyBtn'), email=document.getElementById('email');
+  copy.addEventListener('click',function(){
+    var t=email.textContent;
+    function ok(){copy.textContent='Copied';setTimeout(function(){copy.textContent='Copy email';},1800);}
+    function fallback(){var r=document.createRange();r.selectNodeContents(email);var s=getSelection();s.removeAllRanges();s.addRange(r);copy.textContent='Selected, press Ctrl/Cmd+C';}
+    try{navigator.clipboard.writeText(t).then(ok,fallback);}catch(e){fallback();}
+  });
+})();
+</script>
