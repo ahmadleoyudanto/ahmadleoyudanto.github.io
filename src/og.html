@@ -1,0 +1,35 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+html,body{margin:0;width:1200px;height:627px;overflow:hidden}
+body{background:#0E1418;color:#E5E9E4;font-family:"IBM Plex Sans",Arial,sans-serif;display:grid;grid-template-columns:1fr 430px;gap:56px;padding:64px 72px;box-sizing:border-box;align-items:center}
+.role{font-family:"JetBrains Mono",monospace;color:#43C3AA;font-size:22px}
+h1{font-family:"Bricolage Grotesque",Arial,sans-serif;font-weight:800;font-size:76px;line-height:1;letter-spacing:-.025em;margin:18px 0 26px}
+.thesis{font-size:28px;line-height:1.4;color:#E5E9E4;margin:0 0 34px}
+.url{font-family:"JetBrains Mono",monospace;font-size:22px;color:#95A1A8}
+.url b{color:#43C3AA;font-weight:600}
+.panel{background:#151E24;border:1px solid #25313A;border-radius:14px;padding:26px;display:flex;flex-direction:column;gap:18px}
+.head{display:flex;justify-content:space-between;align-items:baseline}
+.label{font-family:"JetBrains Mono",monospace;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:#95A1A8}
+.count{font-family:"Bricolage Grotesque",Arial,sans-serif;font-weight:800;font-size:44px}
+.count .f{color:#F0A04B}.count .t{color:#43C3AA}
+.grid{display:grid;grid-template-columns:repeat(20,1fr);gap:4px}
+.grid i{display:block;aspect-ratio:1;border-radius:2px;background:#43C3AA}
+.grid i.off{background:#25313A;transform:scale(.72)}
+.foot{font-family:"JetBrains Mono",monospace;font-size:15px;color:#95A1A8}
+</style></head>
+<body>
+<div>
+  <div class="role">Senior Backend Engineer · Team Lead</div>
+  <h1>Ahmad Leo Yudanto</h1>
+  <p class="thesis">I build backend systems that stay calm under load, so the people who run them can stay calm too.</p>
+  <div class="url">ahmadleoyudanto<b>.github.io</b></div>
+</div>
+<div class="panel">
+  <div class="head"><span class="label">k8s pods</span><span class="count"><span class="f">200</span> → <span class="t">30</span></span></div>
+  <div class="grid" id="g"></div>
+  <div class="foot">Kafka fix · same traffic, 85% fewer pods</div>
+</div>
+<script>var g=document.getElementById('g');for(var i=0;i<200;i++){var c=document.createElement('i');if(i>=30)c.className='off';g.appendChild(c);}</script>
+</body></html>
