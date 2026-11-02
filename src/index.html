@@ -105,6 +105,9 @@ section{padding-block:clamp(3rem,7vw,5.5rem);border-top:1px solid var(--line)}
 .list li{padding-block:.9rem;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:.2rem}
 .list li b{font-weight:600}
 .list li span{color:var(--muted);font-size:.95rem}
+.lead{margin-top:clamp(2rem,5vw,3rem);display:flex;flex-direction:column;gap:1rem}
+.lead-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(1.5rem,4vw,3rem)}
+@media (max-width:860px){.lead-list{grid-template-columns:minmax(0,1fr)}}
 .fit{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1.4rem;display:flex;flex-direction:column;gap:1rem}
 
 /* skills */
@@ -325,6 +328,16 @@ footer{padding-block:2rem;border-top:1px solid var(--line);color:var(--muted);fo
           <li><b>Room to improve the tools.</b><span>Some of my best results came from fixing how we work, not only what we ship.</span></li>
         </ul>
       </div>
+    </div>
+
+    <div class="lead">
+      <h3>How I lead</h3>
+      <ul class="list lead-list">
+        <li><b>Safe to say what you think.</b><span>On my team, anyone can raise a concern, disagree with me, or admit a mistake without it being held against them.</span></li>
+        <li><b>Hard conversations happen face to face.</b><span>If I have feedback for you, you hear it from me directly and early. Nothing in a review should surprise anyone or leave them guessing who said it.</span></li>
+        <li><b>Merit over seniority or status.</b><span>The best argument wins, whoever makes it. Title and tenure don't settle a technical decision.</span></li>
+        <li><b>Politics is not the main tool.</b><span>I know it exists and I can work with it, but problems get solved with data and honest discussion first.</span></li>
+      </ul>
     </div>
   </section>
 
