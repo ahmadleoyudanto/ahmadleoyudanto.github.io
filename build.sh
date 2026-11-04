@@ -32,8 +32,9 @@ cp docs/cv.pdf src/cv.pdf
   echo "<meta property=\"og:image:width\" content=\"1200\"><meta property=\"og:image:height\" content=\"627\">"
   echo "<meta name=\"twitter:card\" content=\"summary_large_image\">"
   echo '<style>[hidden]{display:none!important}body{margin:0}img{max-width:100%}</style>'
+  grep -m1 '<title>' src/index.html
   echo '</head><body>'
-  cat src/index.html
+  grep -v '<title>' src/index.html
   echo '</body></html>'
 } > docs/index.html
 
