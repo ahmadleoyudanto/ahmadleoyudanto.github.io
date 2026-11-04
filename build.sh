@@ -1,5 +1,5 @@
 #!/bin/bash
-# Builds docs/ (ready for GitHub Pages / Vercel / Netlify): index.html + cv.pdf
+# Builds docs/ (served by Cloudflare): index.html + cv.pdf
 set -euo pipefail
 cd "$(dirname "$0")"
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
@@ -21,7 +21,7 @@ cp docs/cv.pdf src/cv.pdf
   echo '<!doctype html>'
   echo '<html lang="en"><head><meta charset="utf-8">'
   echo '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">'
-  SITE="https://ahmadleoyudanto.github.io"
+  SITE="https://portfolio.ahmadleoyudanto.workers.dev"
   DESC="Senior backend engineer in Jakarta. Kafka fix that cut pods from 200 to 30, test coverage 0-15% to 90%+, and a promo that gave out 6.5M free gifts in year one."
   echo "<meta name=\"description\" content=\"$DESC\">"
   echo "<meta property=\"og:type\" content=\"website\">"
