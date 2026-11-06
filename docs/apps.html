@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Side projects: Road to N3, a JLPT study app that explains why you miss, and Court Psywar, a padel and badminton session app with fair matchmaking and trash talk.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ahmadleoyudanto.github.io/apps.html">
+<meta property="og:title" content="Apps · Ahmad Leo Yudanto">
+<meta property="og:description" content="Side projects: Road to N3, a JLPT study app that explains why you miss, and Court Psywar, a padel and badminton session app with fair matchmaking and trash talk.">
+<meta property="og:image" content="https://ahmadleoyudanto.github.io/og-image.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="627">
+<meta name="twitter:card" content="summary_large_image">
+<style>[hidden]{display:none!important}body{margin:0}img{max-width:100%}</style>
+<title>Apps · Ahmad Leo Yudanto</title>
+</head><body>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: same tokens as the home page; each app is a two-column "spec sheet" (phone screenshot + notes), alternating sides. */
+:root{
+  --bg:#F2F3EE; --surface:#FFFFFF; --ink:#14202A; --muted:#58646D; --line:#D8DCD3;
+  --accent:#0E7466; --accent-soft:#DCEEE9;
+  --f-display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
+  --f-body:"IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --step--1:0.84rem; --step-0:1rem; --step-1:1.2rem; --step-2:1.55rem; --step-3:2.1rem; --step-4:clamp(2.5rem, 6vw, 4.2rem);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E1418; --surface:#151E24; --ink:#E5E9E4; --muted:#95A1A8; --line:#25313A;
+  --accent:#43C3AA; --accent-soft:#143A35; color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#0E1418; --surface:#151E24; --ink:#E5E9E4; --muted:#95A1A8; --line:#25313A;
+  --accent:#43C3AA; --accent-soft:#143A35; color-scheme:dark;}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:var(--step-0);line-height:1.65;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--f-display);line-height:1.1;text-wrap:balance;margin:0}
+h1{font-size:var(--step-4);font-weight:800;letter-spacing:-0.025em}
+h2{font-size:var(--step-3);font-weight:800;letter-spacing:-0.01em}
+h3{font-size:var(--step-0);font-weight:700}
+p{margin:0}
+.wrap{max-width:68rem;margin:0 auto}
+.label{font-family:var(--f-mono);font-size:0.74rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted)}
+
+.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;padding-block:1.2rem}
+.top nav{display:flex;gap:1.1rem;flex-wrap:wrap}
+.top nav a{color:var(--muted);text-decoration:none;font-size:var(--step--1)}
+.top nav a:hover,.top nav a[aria-current]{color:var(--ink)}
+.brand{font-family:var(--f-mono);font-size:var(--step--1);color:var(--ink);text-decoration:none}
+.brand b{color:var(--accent)}
+
+.intro{display:flex;flex-direction:column;gap:1rem;padding-block:clamp(2.5rem,6vw,4.5rem);max-width:46rem}
+.intro p{font-size:var(--step-1);color:var(--muted)}
+
+.app{display:grid;grid-template-columns:minmax(0,17rem) minmax(0,1fr);gap:clamp(1.5rem,5vw,4rem);padding-block:clamp(2.5rem,6vw,4.5rem);border-top:1px solid var(--line);align-items:start}
+.app.flip{grid-template-columns:minmax(0,1fr) minmax(0,17rem)}
+.app.flip .phone{order:2}
+.phone{margin:0;border:1px solid var(--line);border-radius:28px;padding:8px;background:var(--surface);max-width:17rem;width:100%}
+.phone img{display:block;width:100%;height:auto;border-radius:20px}
+.body{display:flex;flex-direction:column;gap:1.1rem;min-width:0}
+.tagline{font-size:var(--step-1)}
+.why{color:var(--muted);max-width:42rem}
+.features{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem 2rem}
+.features li{display:flex;flex-direction:column;gap:.25rem;padding-top:.8rem;border-top:1px solid var(--line)}
+.features span{color:var(--muted);font-size:.95rem;line-height:1.55}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem}
+.chip{font-family:var(--f-mono);font-size:.72rem;padding:.2rem .55rem;border-radius:4px;background:var(--accent-soft);color:var(--ink)}
+.actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font:600 var(--step--1)/1 var(--f-body);padding:.85rem 1.15rem;border-radius:6px;text-decoration:none;background:var(--ink);color:var(--bg);border:1px solid var(--ink)}
+.btn:hover{transform:translateY(-1px)}
+.url{font-family:var(--f-mono);font-size:.8rem;color:var(--muted);word-break:break-all}
+
+.habits{border-top:1px solid var(--line);padding-block:clamp(2.5rem,6vw,4rem);display:flex;flex-direction:column;gap:1rem;max-width:46rem}
+.habits p{color:var(--muted)}
+footer{padding-block:2rem;border-top:1px solid var(--line);color:var(--muted);font-size:var(--step--1);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+
+@media (max-width: 760px){
+  .app,.app.flip{grid-template-columns:minmax(0,1fr)}
+  .app.flip .phone{order:0}
+  .phone{max-width:15rem}
+  .features{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion: reduce){ *{transition:none!important} .btn:hover{transform:none} }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="index.html">ahmad<b>.</b>leo<b>/</b>yudanto</a>
+    <nav aria-label="Pages">
+      <a href="index.html#work">Work</a><a href="index.html#experience">Experience</a><a href="apps.html" aria-current="page">Apps</a><a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="intro">
+    <span class="label">Side projects</span>
+    <h1>Apps I built for my own problems</h1>
+    <p>Things I made after work because something in my life annoyed me enough. Both run in the browser, keep your data on your device, and are free to use.</p>
+  </div>
+
+  <article class="app" id="road-to-n3">
+    <figure class="phone"><img src="img/road-to-n3.png" alt="Road to N3 on a phone: the N5 journey screen with a countdown to the next JLPT and progress for N5, N4 and N3" width="554" height="1200" loading="lazy"></figure>
+    <div class="body">
+      <span class="label">Study app · JLPT N5 → N3</span>
+      <h2>Road to N3</h2>
+      <p class="tagline">A JLPT study site that tells you why you got it wrong, not just that you did.</p>
+      <p class="why">The JLPT has beaten me twice, and a score never told me why. So I built the thing I wanted: every wrong answer is tagged with the trap it set, and the app tracks which traps keep catching me.</p>
+      <ul class="features">
+        <li><h3>Why I miss</h3><span>Each wrong option is tagged with its trap: vowel length, look-alike kanji, translation trap, particle role. Fast-and-wrong means a wrong belief; slow-and-right means recall is still fragile.</span></li>
+        <li><h3>Real test format</h3><span>Kanji, vocabulary, grammar, sentence order, reading and listening, plus timed mock exams scored on the 180-point scale with the real pass line.</span></li>
+        <li><h3>254 grammar points</h3><span>Minna no Nihongo I and II in lesson order, and N3 grammar by theme, each with its own questions.</span></li>
+        <li><h3>Look-alike kanji</h3><span>122 kanji in 47 groups that people mix up (休 体 本 木, 間 聞 問 開 閉), each with its parts and a memory story.</span></li>
+        <li><h3>Noisy listening</h3><span>Recorded voices, with optional exam-room, café or street noise underneath, because the real listening room is never silent.</span></li>
+        <li><h3>Claude coach</h3><span>Optional: bring your own Claude API key and it explains the pattern behind your real mistakes. The key never leaves your browser.</span></li>
+      </ul>
+      <div class="chips"><span class="chip">HTML + ES modules</span><span class="chip">No build step</span><span class="chip">Web Audio</span><span class="chip">VOICEVOX</span><span class="chip">Claude API</span><span class="chip">Cloudflare</span></div>
+      <div class="actions">
+        <a class="btn" href="https://road-to-n3.ahmadleoyudanto.workers.dev/" target="_blank" rel="noopener">Open Road to N3</a>
+        <span class="url">road-to-n3.ahmadleoyudanto.workers.dev</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="app flip" id="court-psywar">
+    <figure class="phone"><img src="img/court-psywar.png" alt="Court Psywar on a phone: dark home screen with a tennis ball and badminton racket, and a Start new session button" width="554" height="1200" loading="lazy"></figure>
+    <div class="body">
+      <span class="label">Session app · padel &amp; badminton</span>
+      <h2>Court Psywar</h2>
+      <p class="tagline">Balanced matches, an honest table, and no mercy in the commentary.</p>
+      <p class="why">Every padel session had the same three arguments: who plays next, who's actually winning, and who is lying about last week's score. Now one phone settles all three, and adds trash talk nobody asked for.</p>
+      <ul class="features">
+        <li><h3>Fair matchmaking</h3><span>Every possible pairing is scored on who has waited longest, how close the teams are, and how often the same partners repeat. Not happy? Reroll.</span></li>
+        <li><h3>A table you can't game</h3><span>Average games per match, pulled toward the middle so one lucky 4–0 doesn't crown anyone. A hidden Elo rating is used only to balance teams.</span></li>
+        <li><h3>Psywar detector</h3><span>Replays every match to spot nemeses, revenge wins, comebacks, bagels and golden-point chokes, then writes the taunt for you.</span></li>
+        <li><h3>Built for the court</h3><span>Works offline on one phone. Padel with golden point, badminton to 21 with deuce. Shares a recap image straight to WhatsApp or Instagram.</span></li>
+      </ul>
+      <div class="chips"><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Vite</span><span class="chip">PWA · offline</span><span class="chip">Unit-tested domain</span><span class="chip">Cloudflare</span></div>
+      <div class="actions">
+        <a class="btn" href="https://court-psywar.ahmadleoyudanto.workers.dev/" target="_blank" rel="noopener">Open Court Psywar</a>
+        <span class="url">court-psywar.ahmadleoyudanto.workers.dev</span>
+      </div>
+    </div>
+  </article>
+
+  <div class="habits">
+    <span class="label">Same habits as at work</span>
+    <h2>Small apps, built like production</h2>
+    <p>In Court Psywar, the rules that decide things (scoring, matchmaking, ranking, taunts) live in plain functions with unit tests, away from the screens. In Road to N3, the question bank is data, and every wrong option carries a trap tag, so analysis is a query rather than guesswork. Both keep your data on your device, with a backup file to move it. And I build both with Claude Code under the same written rules I use at work.</p>
+  </div>
+
+  <footer>
+    <span>© 2026 Ahmad Leo Yudanto · Jakarta</span>
+    <a href="index.html">Back to home</a>
+  </footer>
+</div>
+</body></html>
